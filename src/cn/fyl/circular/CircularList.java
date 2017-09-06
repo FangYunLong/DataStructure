@@ -107,7 +107,7 @@ public class CircularList<T> {
             } else {
                 Node prev = getNodeByIndex(index - 1);
                 Node next = prev.next;
-                Node newNode = new Node(element, prev, prev.next);
+                Node newNode = new Node(element, prev, next);
                 prev.next = newNode;
                 next.prev = newNode;
                 size++;
@@ -128,8 +128,9 @@ public class CircularList<T> {
         else{
             Node prev = getNodeByIndex(index - 1);
             del = prev.next;
+            Node next = del.next;
             prev.next = del.next;
-            if (del.next != null){
+            if (next != null){
                 del.next.prev = prev;
             }
             del.prev = null;
