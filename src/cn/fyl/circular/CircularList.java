@@ -18,6 +18,10 @@ public class CircularList<T> {
             this.prev = prev;
             this.next = next;
         }
+
+        public String toString(){
+            return data.toString();
+        }
     }
 
     private Node header;
