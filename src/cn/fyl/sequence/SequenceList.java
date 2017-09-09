@@ -37,7 +37,7 @@ public class SequenceList<T> {
     }
 
 
-    public void ensureCapactity(int minCapacity){
+    private void ensureCapactity(int minCapacity){
         if (minCapacity > capacity){
             while (capacity < minCapacity) {
                 capacity <<= 1;
