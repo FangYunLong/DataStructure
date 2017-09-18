@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 以父节点表现法实现一课树
+ * 以父节点表示法实现一一棵树
  * Created by Fang on 2017/9/12.
  */
 public class TreeParent<E> {
