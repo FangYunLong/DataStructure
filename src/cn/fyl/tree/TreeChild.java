@@ -12,9 +12,13 @@ public class TreeChild<E> {
         private int pos;
         private ChildNode next;
 
-        public ChildNode(int pso,ChildNode next){
+        public ChildNode(int pos,ChildNode next){
             this.pos = pos;
             this.next = next;
+        }
+
+        public String toString(){
+            return "ChildNode.pos:"+pos+",next:"+next;
         }
     }
 
@@ -24,7 +28,7 @@ public class TreeChild<E> {
 
         public Node(T data){
             this.data = data;
-            first = null;
+            this.first = null;
         }
 
         public String toString(){
@@ -58,6 +62,7 @@ public class TreeChild<E> {
     public void addNode(E data,Node parent){
         for (int i = 0; i < treeSize; i++){
             if (nodes[i] == null){
+                nodes[i] = new Node(data);
                 if (parent.first == null){
                     parent.first = new ChildNode(i , null);
                 }
@@ -108,14 +113,14 @@ public class TreeChild<E> {
         return deep(root());
     }
 
-    public int deep(Node node){
+    private int deep(Node node){
         if (node.first == null){
             return 1;
         }
         else{
             int max = 0;
             ChildNode next = node.first;
-            while (next != null){
+            if (next != null){
                 int tmp = deep(nodes[next.pos]);
                 if (tmp > max){
                     max = tmp;
