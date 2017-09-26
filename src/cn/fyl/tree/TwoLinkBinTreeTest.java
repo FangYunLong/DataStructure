@@ -13,8 +13,13 @@ public class TwoLinkBinTreeTest {
         binTree.addNode(root,"right1",false);
         binTree.addNode(root.left,"left2",true);
         System.out.println(binTree.deep());
-        List<TwoLinkBinTree.TreeNode> list = binTree.levelTraversal();
-        for (TwoLinkBinTree.TreeNode node : list){
+        List<TwoLinkBinTree.TreeNode> list1 = binTree.breadthFirst();
+        for (TwoLinkBinTree.TreeNode node : list1){
+            System.out.print(node.data+" ");
+        }
+        System.out.println();
+        List<TwoLinkBinTree.TreeNode> list2 = binTree.depthFirst();
+        for (TwoLinkBinTree.TreeNode node : list2){
             System.out.print(node.data+" ");
         }
     }

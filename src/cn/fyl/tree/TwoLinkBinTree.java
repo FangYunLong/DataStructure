@@ -1,9 +1,6 @@
 package cn.fyl.tree;
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 /**
  * 以二叉链表实现二叉树的基本功能
@@ -123,9 +120,9 @@ public class TwoLinkBinTree<E> {
     }
 
     //层次遍历
-    public List<TreeNode> levelTraversal(){
-        Queue<TreeNode> queue = new ArrayDeque<TreeNode>();
-        ArrayList<TreeNode> list = new ArrayList<TreeNode>();
+    public List<TreeNode> breadthFirst(){
+        Queue<TreeNode> queue = new ArrayDeque<>();
+        ArrayList<TreeNode> list = new ArrayList<>();
         if (root != null) {
             queue.offer(root);
         }
@@ -137,6 +134,25 @@ public class TwoLinkBinTree<E> {
             }
             if (node.right != null){
                 queue.offer(node.right);
+            }
+        }
+        return list;
+    }
+
+    public List<TreeNode> depthFirst(){
+        Stack<TreeNode> stack = new Stack<>();
+        ArrayList<TreeNode> list = new ArrayList<>();
+        if (root != null){
+            stack.push(root);
+        }
+        while (!stack.isEmpty()){
+            list.add(stack.peek());
+            TreeNode node = stack.pop();
+            if (node.right != null){
+                stack.push(node.right);
+            }
+            if (node.left != null){
+                stack.push(node.left);
             }
         }
         return list;
