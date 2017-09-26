@@ -119,7 +119,6 @@ public class TwoLinkBinTree<E> {
         }
     }
 
-    //层次遍历
     public List<TreeNode> breadthFirst(){
         Queue<TreeNode> queue = new ArrayDeque<>();
         ArrayList<TreeNode> list = new ArrayList<>();
@@ -156,5 +155,42 @@ public class TwoLinkBinTree<E> {
             }
         }
         return list;
+    }
+
+    public void preOrder(){
+        preOrder(root);
+
+    }
+
+    private void preOrder(TreeNode node){
+        if (node != null){
+            System.out.print(node.data+" ");
+            preOrder(node.left);
+            preOrder(node.right);
+        }
+    }
+
+    public void inOrder(){
+        inOrder(root);
+    }
+
+    private void inOrder(TreeNode node){
+        if (node != null){
+            inOrder(node.left);
+            System.out.print(node.data+" ");
+            inOrder(node.right);
+        }
+    }
+
+    public void postOrder(){
+        postOrder(root);
+    }
+
+    private void postOrder(TreeNode node){
+        if (node != null){
+            postOrder(node.left);
+            postOrder(node.right);
+            System.out.print(node.data+" ");
+        }
     }
 }
