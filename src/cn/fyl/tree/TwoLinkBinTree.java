@@ -77,8 +77,10 @@ public class TwoLinkBinTree<E> {
     }
 
     public E parent(TreeNode node){
-        return null;
+       return null;
     }
+
+
 
     public E getLeftChild(TreeNode parent){
         if (parent == null){
