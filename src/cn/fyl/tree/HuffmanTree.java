@@ -41,7 +41,7 @@ public class HuffmanTree {
         return nodes.get(0);
     }
 
-    private static void quickSort(List<Node> nodes){
+    public static void quickSort(List<Node> nodes){
         subSort(nodes,0,nodes.size() - 1);
     }
 
@@ -57,8 +57,8 @@ public class HuffmanTree {
             int i = start;
             int j = end + 1;
             while (true){
-                while (i < end && nodes.get(++i).weight >= base.weight);
-                while (j > start &&nodes.get(--j).weight <= base.weight);
+                while (i < end && nodes.get(++i).weight <= base.weight);
+                while (j > start &&nodes.get(--j).weight >= base.weight);
                 if (i < j) {
                     swap(nodes, i, j);
                 }
