@@ -122,6 +122,7 @@ public class TwoLinkBinTree<E> {
     }
 
     public List<TreeNode> breadthFirst(){
+        //广度优先遍历，一层层遍历，利用队列的先进先出特点，以左右节点顺序入队，循环该操作，遍历所有节点
         Queue<TreeNode> queue = new ArrayDeque<>();
         ArrayList<TreeNode> list = new ArrayList<>();
         if (root != null) {
@@ -141,6 +142,7 @@ public class TwoLinkBinTree<E> {
     }
 
     public List<TreeNode> depthFirst(){
+        //深度优先遍历，利用栈的后进先出特点，以右左节点顺序进栈，循环该操作，遍历所有节点
         Stack<TreeNode> stack = new Stack<>();
         ArrayList<TreeNode> list = new ArrayList<>();
         if (root != null){
