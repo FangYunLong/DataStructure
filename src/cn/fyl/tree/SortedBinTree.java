@@ -80,7 +80,7 @@ public class SortedBinTree<T extends Comparable> {
         }
     }
 
-    public Node get(T data){
+    public Node getNode(T data){
         Node current = root;
         int cmp = 0;
         while (current != null){
@@ -99,7 +99,69 @@ public class SortedBinTree<T extends Comparable> {
     }
 
     public void remove(T data){
-
+        Node target = getNode(data);
+        if (target == null){
+            return;
+        }
+        if (target.left == null && target.right == null){
+            if (target == root){
+                root = null;
+            }
+            else{
+                if (target == target.parent.left){
+                    target.parent.left = null;
+                }
+                else{
+                    target.parent.right = null;
+                }
+                target.parent = null;
+            }
+        }
+        else if (target.left != null && target.right == null){
+            if(target == root){
+                root = target.left;
+            }
+            else{
+                if (target == target.parent.left){
+                    target.parent.left = target.left;
+                }
+                else{
+                    target.parent.right = target.left;
+                }
+                target = target.parent;
+            }
+        }
+        else if (target.left == null && target.right != null){
+            if (target == root){
+                root = target.right;
+            }
+            else{
+                if (target == target.parent.left){
+                    target.parent.left = target.right;
+                }
+                else {
+                    target.parent.right = target.right;
+                }
+                target = target.parent;
+            }
+        }
+        else{
+            Node leftMaxNode = target.left;     //保存左子树中值最大的节点
+            while (target.right != null){
+                leftMaxNode = leftMaxNode.right;
+            }
+            leftMaxNode.parent.right = null;    //从原来子树中删除leftMaxNode节点
+            leftMaxNode.parent = target.parent;
+            if (target == target.parent.left){
+                target.parent.left = leftMaxNode;
+            }
+            else{
+                target.parent.right = leftMaxNode;
+            }
+            leftMaxNode.left = target.left;
+            leftMaxNode.right = target.right;
+            target.parent = target.left = target.right = null;
+        }
     }
 
     public List<Node> breadthFirst(){
