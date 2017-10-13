@@ -9,15 +9,16 @@ public class SortedBinTreeTest {
     @Test
     public void test(){
         SortedBinTree<Integer> sortedBinTree = new SortedBinTree<>();
-        sortedBinTree.add(1);
-        sortedBinTree.add(2);
-        sortedBinTree.add(3);
-        sortedBinTree.add(4);
         sortedBinTree.add(5);
-        sortedBinTree.add(6);
-        sortedBinTree.add(7);
+        sortedBinTree.add(20);
+        sortedBinTree.add(10);
+        sortedBinTree.add(3);
+        sortedBinTree.add(8);
+        sortedBinTree.add(15);
+
         System.out.println(sortedBinTree.breadthFirst());
-        sortedBinTree.remove(7);
+        sortedBinTree.remove(20);
         System.out.println(sortedBinTree.breadthFirst());
+        sortedBinTree.inOrder();
     }
 }

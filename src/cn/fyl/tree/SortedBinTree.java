@@ -77,6 +77,7 @@ public class SortedBinTree<T extends Comparable> {
             else{
                 parent.left = newNode;
             }
+
         }
     }
 
@@ -103,11 +104,13 @@ public class SortedBinTree<T extends Comparable> {
         if (target == null){
             return;
         }
+        //左右子树都为空，根或叶子节点
         if (target.left == null && target.right == null){
             if (target == root){
                 root = null;
             }
             else{
+                //判断删除节点为父节点的左节点还是右节点
                 if (target == target.parent.left){
                     target.parent.left = null;
                 }
@@ -117,6 +120,7 @@ public class SortedBinTree<T extends Comparable> {
                 target.parent = null;
             }
         }
+        //左子树不为空，右子树为空
         else if (target.left != null && target.right == null){
             if(target == root){
                 root = target.left;
@@ -126,11 +130,12 @@ public class SortedBinTree<T extends Comparable> {
                     target.parent.left = target.left;
                 }
                 else{
-                    target.parent.right = target.left;
+                  target.parent.right =target.left;
                 }
-                target = target.parent;
+                target.left.parent = target.parent;
             }
         }
+        //左子树为空，右子树不为空
         else if (target.left == null && target.right != null){
             if (target == root){
                 root = target.right;
@@ -142,12 +147,13 @@ public class SortedBinTree<T extends Comparable> {
                 else {
                     target.parent.right = target.right;
                 }
-                target = target.parent;
+                target.right.parent = target.parent;
             }
         }
+        //左右子树都不为空
         else{
             Node leftMaxNode = target.left;     //保存左子树中值最大的节点
-            while (target.right != null){
+            while (leftMaxNode.right != null){
                 leftMaxNode = leftMaxNode.right;
             }
             leftMaxNode.parent.right = null;    //从原来子树中删除leftMaxNode节点
@@ -200,5 +206,17 @@ public class SortedBinTree<T extends Comparable> {
             }
         }
         return list;
+    }
+
+    public void inOrder(){
+        inOrder(root);
+    }
+
+    private void inOrder(Node node){
+        if (node != null) {
+            inOrder(node.left);
+            System.out.print("data:"+node.data+" ");
+            inOrder(node.right);
+        }
     }
 }
